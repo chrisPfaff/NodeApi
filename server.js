@@ -11,8 +11,9 @@ const port = 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'app/views'));
+
 
 app.use(express.static(path.join('app/public')));
 
