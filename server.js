@@ -9,6 +9,7 @@ const app = express();
 const port = 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'pug')
 
 MongoClient.connect(db.url, (err, database) => {
   console.log("here");
