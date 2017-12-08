@@ -1,4 +1,4 @@
-let ObjectId = require('mongodb').ObjectID;
+let ObjectID = require('mongodb').ObjectID;
 
 module.exports = (app, db) => {
   app.post('/notes', (req, res) => {
@@ -12,10 +12,9 @@ module.exports = (app, db) => {
     });
   });
 
-  app.get('notes/:id', (req, res) => {
-    let id = req.params.id;
-    const details = {'_id:': new ObjectID(id)};
-    db.collection('notes').findOne(details, (err, item) => {
+  app.get('/notes/:id', (req, res) => {
+    const id = req.params.id;
+    db.collection('notes').findOne({"_id": ObjectID(id)}, (err, item) => {
       if (err) {
         res.send({error: 'An error happened'});
       } else {
@@ -23,6 +22,7 @@ module.exports = (app, db) => {
       }
     })
   })
+
   app.get('/', (req, res) => {
     res.send('hello');
   })
